@@ -105,39 +105,39 @@ function intialAction() {
 
     inquirer.prompt([{
         message: "What would you like to do?",
-        choices: ["Go to tavern", "Adventure!", "Shopping trip", "Stare at the sun"],
+        choices: ["Go to tavern", "Adventure!", "Shopping trip", "Stare at the sun"),
         type: "list",
         name: "action"
     }]).then(function (res) {
 
         switch (res.action) {
             case "Go to tavern":
-                
+
                 break;
-        
+
             case "Adventure!":
-                
+                randomEncounter();
                 break;
-        
+
             case "Shopping trip":
-                
+                console.log("shopping!");
                 break;
-        
+
             case "Go to tavern":
-                
+                console.log("Tavern");
                 break;
-        
+
             case "Stare at the sun":
-                
+                character.printstats();
                 break;
-        
+
             default:
                 break;
         }
     });
 }
 
-function action(message, option1, option2, option3, option4) {
+function action(message, option1, option2, option3, option4, action1, action2, action3, action4) {
 
     inquirer.prompt([{
         message: message,
@@ -148,24 +148,23 @@ function action(message, option1, option2, option3, option4) {
 
         switch (res.action) {
             case option1:
-                
+                action1;
                 break;
-        
+
             case option2:
-                
+                action2;
                 break;
-        
+
             case option3:
-                
+                action3;
                 break;
-        
+
             case option4:
-                
+                action4;
                 break;
-        
+
             default:
                 break;
         }
     });
 }
-
