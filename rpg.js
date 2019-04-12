@@ -74,17 +74,17 @@ inquirer.prompt([{
     switch (res.job) {
         case "warrior":
             character = new Character(res.name, res.job, res.gender, 34, 80, 300);
-            action("What would you like to do?", "Go to tavern", "Adventure!", "Shopping trip", "Stare at the sun");
+            intialAction();
             break;
 
         case "rogue":
             character = new Character(res.name, res.job, res.gender, 24, 100, 240);
-            action("What would you like to do?", "Go to tavern", "Adventure!", "Shopping trip", "Stare at the sun");
+            intialAction();
             break;
 
         case "mage":
             character = new Character(res.name, res.job, res.gender, 24, 60, 400);
-            action("What would you like to do?", "Go to tavern", "Adventure!", "Shopping trip", "Stare at the sun");
+            intialAction();
             break;
 
         default:
@@ -97,7 +97,7 @@ function randomEncounter() {
     var randomEnemy = Math.floor(Math.random() * enemies.length);
     var enemy = enemies[randomEnemy];
 
-    console.log("A wild " + enemy + " appears!");
+    console.log("A wild " + enemy.name + " appears!");
 
 }
 
@@ -105,14 +105,14 @@ function intialAction() {
 
     inquirer.prompt([{
         message: "What would you like to do?",
-        choices: ["Go to tavern", "Adventure!", "Shopping trip", "Stare at the sun"),
+        choices: ["Go to tavern", "Adventure!", "Shopping trip", "Stare at the sun"],
         type: "list",
         name: "action"
     }]).then(function (res) {
 
         switch (res.action) {
             case "Go to tavern":
-
+                console.log("tavern");
                 break;
 
             case "Adventure!":
@@ -121,10 +121,6 @@ function intialAction() {
 
             case "Shopping trip":
                 console.log("shopping!");
-                break;
-
-            case "Go to tavern":
-                console.log("Tavern");
                 break;
 
             case "Stare at the sun":
@@ -137,34 +133,37 @@ function intialAction() {
     });
 }
 
-function action(message, option1, option2, option3, option4, action1, action2, action3, action4) {
+// * Attempt at simplifying commands
+// function actionPrompt(message, option1, option2, option3, option4) {
 
-    inquirer.prompt([{
-        message: message,
-        choices: [option1, option2, option3, option4],
-        type: "list",
-        name: "action"
-    }]).then(function (res) {
+//     inquirer.prompt([{
+//         message: message,
+//         choices: [option1, option2, option3, option4],
+//         type: "list",
+//         name: "action"
+//     }]);
 
-        switch (res.action) {
-            case option1:
-                action1;
-                break;
+// }
 
-            case option2:
-                action2;
-                break;
+// .then(function (res) {
 
-            case option3:
-                action3;
-                break;
+//     switch (res.action) {
+//         case option1:
+//             break;
 
-            case option4:
-                action4;
-                break;
+//         case option2:
+//             break;
 
-            default:
-                break;
-        }
-    });
+//         case option3:
+//             break;
+
+//         case option4:
+//             break;
+
+//         default:
+//             break;
+//     }
+// });
 }
+//  * first action
+// action("What would you like to do?", "Go to tavern", "Adventure!", "Shopping trip", "Stare at the sun", console.log("tavern"), randomEncounter(), console.log("shop"), character.printstats());
